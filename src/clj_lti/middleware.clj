@@ -15,8 +15,12 @@
   (let [params (dissoc (:params request) :oauth_signature)
         method (-> request :request-method name .toUpperCase)
         uri (url request)
-        given-signature (-> request :params :oauth_signature)]
-    (= given-signature (oauth/sign consumer-secret (oauth/base-string method uri params)))))
+        given-signature (-> request :params :oauth_signature)
+        given-signature (if (vector? given-signature)
+                           (first given-signature)
+                           given-signature)]
+     (= given-signature 
+        (oauth/sign consumer-secret (oauth/base-string method uri params)))))
 
 (defn lti-middleware
   [handler]
