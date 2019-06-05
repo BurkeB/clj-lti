@@ -19,8 +19,9 @@
         given-signature (if (vector? given-signature)
                            (first given-signature)
                            given-signature)]
-     (= given-signature 
-        (oauth/sign consumer-secret (oauth/base-string method uri params)))))
+    (or (= given-signature
+           (oauth/sign consumer-secret (oauth/base-string method uri params)))
+        (= given-signature (oauth/sign consumer-secret (oauth/base-string method uri params) "HmacSHA1")))))
 
 (defn lti-middleware
   [handler]

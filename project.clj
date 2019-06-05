@@ -1,4 +1,4 @@
-(defproject clj-lti "0.1.3-tizra"
+(defproject clj-lti "0.1.3-tizra-2"
   :description "LTI library for CLojure"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
