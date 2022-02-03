@@ -34,4 +34,4 @@
 
 (deftest sign-test
   (testing "signing"
-    (is (= (sign signing-key (base-string method url params)) "tnnArxj06cWHq44gCs1OSKk/jLY="))))
+    (is (= (sign signing-key (base-string method url params) "HmacSHA1") "tnnArxj06cWHq44gCs1OSKk/jLY="))))
